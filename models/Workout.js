@@ -2,23 +2,28 @@ const mongoose = require('mongoose');
 
 const workoutSchema = new mongoose.Schema({
 	
-	title: {
+	name: {
 	    type: String,
-	    required: [true, 'Workout title is required'], // Title of the workout
+	    required: [true, 'Workout title is required'],
 	},
-	description: {
-	    type: String,
-	    required: false,
+	duration: {
+	    type: Number,
+	    required: [true, 'Workout duration is required'],
   	},
+	dateAdded: {
+		type: Date,
+		default: Date.now,
+	},
 	status: {
-		type: Boolean,
-		default: false, // Default: Not completed
+		type: String,
+		// enum: ['completed', 'in-progress', 'pending'],
+		required: true,
 	},
-	userId: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		required: [false, 'User ID is required'], // Reference to the user who owns the workout
-	},
+	userId: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 });
 
 

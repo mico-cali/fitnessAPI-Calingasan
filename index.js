@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 //MongoDB database
-mongoose.connect("mongodb+srv://mico_cali:admin123@cluster0.4ipfp.mongodb.net/fitness-API?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("mongodb+srv://mico_cali:pass123@cluster0.4ipfp.mongodb.net/fitness-API?retryWrites=true&w=majority&appName=Cluster0");
 
 mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas.'));
 
