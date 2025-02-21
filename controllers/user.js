@@ -45,3 +45,19 @@ module.exports.loginUser = (req, res) => {
 		return res.status(400).send(false);
 	}
 }
+
+// get user details
+module.exports.userRetrieveDetails = (req, res) => {
+
+    User.findById(req.user.id)
+        .then(user => {
+            if (user) {
+                user.password = "";
+                return res.status(200).send(user);
+            } else {
+                return res.status(404).send({ message: "User not found." });
+            }
+        })
+        .catch(error => errorHandler(error, req, res));
+};
+
